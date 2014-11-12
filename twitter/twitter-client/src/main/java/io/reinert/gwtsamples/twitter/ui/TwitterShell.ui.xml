@@ -1,0 +1,60 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:my='urn:import:io.reinert.gwtsamples.twitter.ui'>
+    <g:HTMLPanel>
+        <nav class="navbar navbar-inverse navbar-static-top bs-docs-nav" id="top" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed"
+                            data-toggle="collapse" data-target="#top-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"/>
+                        <span class="icon-bar"/>
+                        <span class="icon-bar"/>
+                    </button>
+                    <a class="navbar-brand" href="#">Twitter</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="top-navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li ui:field="homeLi" class="active">
+                            <a href="#home">
+                                <span class="glyphicon glyphicon-home"/>&nbsp;
+                                <span ui:field="home">Home</span>
+                            </a>
+                        </li>
+                        <li ui:field="aboutLi">
+                            <a href="#about">
+                                <span class="glyphicon glyphicon-bell"/>&nbsp;
+                                <span ui:field="about">About</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a style="cursor: pointer" data-toggle="modal" data-target="#myModal">
+                                <span class="glyphicon glyphicon-user"/>&nbsp;
+                                <span ui:field="userName" />
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+        <g:HTMLPanel styleName="container">
+            <g:HTMLPanel styleName="row">
+                <g:SimplePanel styleName="col-md-12" ui:field="center" />
+            </g:HTMLPanel>
+        </g:HTMLPanel>
+
+        <!-- Modal -->
+        <my:UserSettingsModal ui:field="modal" />
+
+    </g:HTMLPanel>
+</ui:UiBinder>

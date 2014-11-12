@@ -1,0 +1,19 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:with field="res" type="io.reinert.gwtsamples.twitter.resources.Resources"/>
+
+    <g:HTMLPanel>
+        <g:SimplePanel styleName="{res.style.compose}">
+            <g:FormPanel styleName="">
+                <g:TextArea ui:field="compose" styleName="form-control" visibleLines="3" />
+            </g:FormPanel>
+        </g:SimplePanel>
+        <g:HTMLPanel styleName="{res.style.tweets}">
+            <div class="{res.style.tweetsHeader}">
+                <h2>Tweets</h2>
+            </div>
+            <g:SimplePanel ui:field="tweetsContainer" styleName="{res.style.tweetsContent}" />
+        </g:HTMLPanel>
+    </g:HTMLPanel>
+</ui:UiBinder>

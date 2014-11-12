@@ -1,0 +1,46 @@
+.compose {
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    height: auto;
+}
+
+.tweets {
+    border: 1px solid #e1e8ed;
+    border-radius: 6px;
+}
+
+.tweets .tweets-header {
+    min-height: 20px;
+    padding: 0 15px;
+    color: #66757f;
+    border-bottom: 1px solid #e1e8ed;
+    box-shadow: 0 2px 2px -1px rgba(0,0,0,.1);
+    -webkit-box-shadow: 0 2px 2px -1px rgba(0,0,0,.1);
+    position: relative;
+}
+
+.tweets .tweets-content {
+    /*margin-bottom: 10px;*/
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.tweets-content .tweet-wrapper {
+    cursor: text;
+    padding: 0 20px;
+    background: #fff;
+    border-top: 1px solid #e1e8ed;
+}
+
+.tweets-content > div:first-child > div:first-child > div:first-child > div.tweet-wrapper {
+    border-top: 0;
+}
+
+.tweet-header {
+    display: block;
+}
+
+.tweet-content > p {
+    white-space: pre;
+}
