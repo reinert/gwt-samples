@@ -1,5 +1,8 @@
 package io.reinert.gwtsamples.twitter.model;
 
+import io.reinert.requestor.Json;
+
+@Json
 public class User {
 
     private String userName;

@@ -42,7 +42,7 @@ public class Home extends Composite {
 
         Resources.Util.ensureStyle(); // Ensure SampleStyle injected
 
-        compose.getElement().setAttribute("placeholder", "Escreva seu tweet e pressione Ctrl + Enter...");
+        compose.getElement().setAttribute("placeholder", "Write your tweet and press Ctrl + Enter...");
         tweetsCelList = new CellList<>(new TweetCell());
         tweetsContainer.add(tweetsCelList);
 

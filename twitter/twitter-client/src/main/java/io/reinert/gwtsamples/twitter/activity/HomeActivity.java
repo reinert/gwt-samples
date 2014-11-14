@@ -29,6 +29,31 @@ public class HomeActivity extends AbstractActivity implements Home.Handler {
     }
 
     @Override
+    public void start(final AcceptsOneWidget panel, final EventBus eventBus) {
+        requestor.request("/server/tweets").get(Tweet.class, List.class).done(new ListDoneCallback<Tweet>() {
+            @Override
+            public void onDone(List<Tweet> result) {
+                // Listen to userName changes
+                eventBus.addHandler(UserChangeEvent.TYPE, new UserChangeEvent.Handler() {
+                    @Override
+                    public void onUserChange(UserChangeEvent event) {
+                        userName = event.getNewUserName();
+                    }
+                });
+
+                home.setHandler(HomeActivity.this); // Bind listener
+                home.setTweets(result);
+                panel.setWidget(home); // Only display screen AFTER loading tweets
+            }
+        }).fail(new FailCallback<Throwable>() {
+            @Override
+            public void onFail(Throwable result) {
+                Window.alert("Error while retrieving tweets.");
+            }
+        });
+    }
+
+    @Override
     public void onSendTweet(String message) {
         final Tweet tweet = new Tweet(userName, message);
         requestor.request("/server/tweets").payload(tweet).post().done(new DoneCallback<Void>() {
@@ -70,31 +95,6 @@ public class HomeActivity extends AbstractActivity implements Home.Handler {
                         }
                     }
                 });
-    }
-
-    @Override
-    public void start(final AcceptsOneWidget panel, final EventBus eventBus) {
-        requestor.request("/server/tweets").get(Tweet.class, List.class).done(new ListDoneCallback<Tweet>() {
-            @Override
-            public void onDone(List<Tweet> result) {
-                // Listen to userName changes
-                eventBus.addHandler(UserChangeEvent.TYPE, new UserChangeEvent.Handler() {
-                    @Override
-                    public void onUserChange(UserChangeEvent event) {
-                        userName = event.getNewUserName();
-                    }
-                });
-
-                home.setHandler(HomeActivity.this); // Bind listener
-                home.setTweets(result);
-                panel.setWidget(home); // Only display screen AFTER loading tweets
-            }
-        }).fail(new FailCallback<Throwable>() {
-            @Override
-            public void onFail(Throwable result) {
-                Window.alert("Error while retrieving tweets.");
-            }
-        });
     }
 
     private void loadTweets() {
