@@ -88,9 +88,12 @@ public class HomeActivity extends AbstractActivity implements Home.Handler {
                     @Override
                     public void onFail(Throwable result) {
                         if (result instanceof UnsuccessfulResponseException) {
+                            // UnsuccessfulResponseException gives us access to the HTTP Response
+                            // It is thrown whenever the response has arrived with a status family other than 2xx
                             UnsuccessfulResponseException e = (UnsuccessfulResponseException) result;
                             Window.alert("Server responded with " + e.getStatusCode());
                         } else {
+                            // If the XMLHttpRequest could not send the request, than a RuntimeException is thrown
                             Window.alert("Unknown error while retrieving tweets.");
                         }
                     }
