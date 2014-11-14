@@ -4,6 +4,14 @@
     <inherits name="com.google.gwt.user.theme.clean.Clean"/>
     <inherits name="com.google.gwt.place.Place"/>
     <inherits name="com.google.gwt.activity.Activity"/>
+    <inherits name="io.reinert.requestor.RequestorWithGwtJackson"/>
+
+    <inherits name="com.google.gwt.logging.Logging"/>
+    <set-property name="gwt.logging.developmentModeHandler" value="DISABLED" />
+    <set-property name="gwt.logging.firebugHandler" value="DISABLED" />
+    <set-property name="gwt.logging.hasWidgetsHandler" value="DISABLED" />
+    <set-property name="gwt.logging.popupHandler" value="DISABLED" />
+    <set-property name="gwt.logging.systemHandler" value="DISABLED" />
 
     <source path=""/>
 

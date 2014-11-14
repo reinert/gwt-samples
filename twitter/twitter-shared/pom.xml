@@ -21,6 +21,10 @@
             <artifactId>gwt-servlet</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>io.reinert.requestor</groupId>
+            <artifactId>requestor</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

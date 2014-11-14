@@ -5,13 +5,12 @@
 
     <!-- Servlets -->
     <servlet>
-        <servlet-name>tweetServlet</servlet-name>
-        <servlet-class>io.reinert.gwtsamples.twitter.service.TweetServiceImpl</servlet-class>
+        <servlet-name>tweetsServlet</servlet-name>
+        <servlet-class>io.reinert.gwtsamples.twitter.service.TweetsServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>tweetServlet</servlet-name>
-        <url-pattern>/sample/tweet</url-pattern>
+        <servlet-name>tweetsServlet</servlet-name>
+        <url-pattern>/server/tweets/*</url-pattern>
     </servlet-mapping>
 
     <!-- Default page to serve -->
