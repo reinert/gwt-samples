@@ -13,6 +13,15 @@
         <url-pattern>/server/tweets/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>authServlet</servlet-name>
+        <servlet-class>io.reinert.gwtsamples.twitter.service.AuthServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>authServlet</servlet-name>
+        <url-pattern>/server/auth/*</url-pattern>
+    </servlet-mapping>
+
     <!-- Default page to serve -->
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>

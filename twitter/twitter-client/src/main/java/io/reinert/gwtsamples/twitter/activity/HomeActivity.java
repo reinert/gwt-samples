@@ -14,6 +14,7 @@ import io.reinert.gwtsamples.twitter.model.Tweet;
 import io.reinert.gwtsamples.twitter.ui.Home;
 import io.reinert.requestor.ListDoneCallback;
 import io.reinert.requestor.Requestor;
+import io.reinert.requestor.UnsuccessfulResponseException;
 
 public class HomeActivity extends AbstractActivity implements Home.Handler {
 
@@ -41,6 +42,34 @@ public class HomeActivity extends AbstractActivity implements Home.Handler {
                 Window.alert("Error while sending tweet.");
             }
         });
+    }
+
+    @Override
+    public void onLoadButtonClicked() {
+        loadTweets();
+    }
+
+    @Override
+    public void onFaultyLoadButtonClicked() {
+        requestor.request("/server/tweets").accept("invalid/type")
+                .get(Tweet.class, List.class)
+                .done(new ListDoneCallback<Tweet>() {
+                    @Override
+                    public void onDone(List<Tweet> result) {
+                        home.setTweets(result);
+                    }
+                })
+                .fail(new FailCallback<Throwable>() {
+                    @Override
+                    public void onFail(Throwable result) {
+                        if (result instanceof UnsuccessfulResponseException) {
+                            UnsuccessfulResponseException e = (UnsuccessfulResponseException) result;
+                            Window.alert("Server responded with " + e.getStatusCode());
+                        } else {
+                            Window.alert("Unknown error while retrieving tweets.");
+                        }
+                    }
+                });
     }
 
     @Override

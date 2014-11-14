@@ -3,33 +3,27 @@ package io.reinert.gwtsamples.twitter.service;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
 import io.reinert.gwtsamples.twitter.database.TweetTable;
 import io.reinert.gwtsamples.twitter.model.Tweet;
 
 public class TweetsServlet extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger(TweetsServlet.class.getName());
-
-    public static final Gson gson = new Gson();
     public static final String APPLICATION_JSON = "application/json";
     public static final String ACCEPT = "Accept";
     public static final String CONTENT_TYPE = "Content-Type";
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String accept = req.getHeader(ACCEPT);
+        String accept = req.getHeader(CONTENT_TYPE);
         if (accept.equalsIgnoreCase(APPLICATION_JSON)) {
             try (BufferedReader r = req.getReader()) {
-                Tweet tweet = gson.fromJson(r, Tweet.class);
+                Tweet tweet = Factory.getGson().fromJson(r, Tweet.class);
                 TweetTable.add(tweet);
             }
         } else {
@@ -49,24 +43,23 @@ public class TweetsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         String accept = req.getHeader(ACCEPT);
         if (accept.equalsIgnoreCase(APPLICATION_JSON)) {
             resp.setHeader(CONTENT_TYPE, APPLICATION_JSON);
             ResourceMatcher resource = new ResourceMatcher(req, resp);
             if (resource.matchesOne()) {
                 try (PrintWriter w = resp.getWriter()) {
-                    String tweetsJson = gson.toJson(TweetTable.get(resource.getId()));
+                    String tweetsJson = Factory.getGson().toJson(TweetTable.get(resource.getId()));
                     w.println(tweetsJson);
                 }
             } else if (resource.matchesAll()) {
                 try (PrintWriter w = resp.getWriter()) {
-                    String tweetsJson = gson.toJson(TweetTable.get());
+                    String tweetsJson = Factory.getGson().toJson(TweetTable.get());
                     w.println(tweetsJson);
                 }
             }
         } else {
-            resp.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+            resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
     }
 

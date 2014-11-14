@@ -1,3 +1,8 @@
+.actions {
+    margin-bottom: 10px;
+    height: auto;
+}
+
 .compose {
     position: relative;
     margin-bottom: 20px;

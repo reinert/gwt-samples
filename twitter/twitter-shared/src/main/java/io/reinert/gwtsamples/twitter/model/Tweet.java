@@ -1,11 +1,9 @@
 package io.reinert.gwtsamples.twitter.model;
 
-import java.io.Serializable;
-
 import io.reinert.requestor.Json;
 
 @Json
-public class Tweet implements Serializable {
+public class Tweet {
 
     private String userName;
     private String message;

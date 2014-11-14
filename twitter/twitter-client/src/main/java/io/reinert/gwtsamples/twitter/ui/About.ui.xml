@@ -3,7 +3,7 @@
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <g:HTMLPanel>
         <h2>About</h2>
-        <p>That's all about Twitter and GWT!</p>
+        <p>That's all about Twitter, GWT and Requestor!</p>
         <g:Button ui:field="homeButton">Take me Home!</g:Button>
     </g:HTMLPanel>
 </ui:UiBinder>

@@ -4,6 +4,10 @@
     <ui:with field="res" type="io.reinert.gwtsamples.twitter.resources.Resources"/>
 
     <g:HTMLPanel>
+        <g:HTMLPanel styleName="{res.style.actions}">
+            <g:Button styleName="btn btn-primary" ui:field="loadButton">Load Tweets (accept application/json)</g:Button>
+            <g:Button styleName="btn btn-danger" ui:field="faultyLoadButton">Load Tweets (accept invalid/type)</g:Button>
+        </g:HTMLPanel>
         <g:SimplePanel styleName="{res.style.compose}">
             <g:FormPanel styleName="">
                 <g:TextArea ui:field="compose" styleName="form-control" visibleLines="3" />
