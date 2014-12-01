@@ -37,12 +37,12 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-user</artifactId>
-    </dependency>
-    <dependency>
       <groupId>io.reinert.requestor</groupId>
       <artifactId>requestor</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
     </dependency>
   </dependencies>
 
@@ -53,6 +53,7 @@
         <artifactId>gwt-maven-plugin</artifactId>
         <configuration>
           <module>io.reinert.gwtsamples.twitter.Sample</module>
+          <style>DETAILED</style>
           <strict>true</strict>
           <genParam>${gwt.genParam}</genParam>
           <noserver>true</noserver>
