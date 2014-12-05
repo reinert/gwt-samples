@@ -16,6 +16,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <mavenVersion>3.0</mavenVersion>
     <requestor.version>0.1.0-SNAPSHOT</requestor.version>
+    <gdeferred.version>0.9.0-SNAPSHOT</gdeferred.version>
+    <gwtjackson.version>0.7.0</gwtjackson.version>
+    <turbogwt.version>0.4.0</turbogwt.version>
     <gwt.version>2.7.0</gwt.version>
     <gson.version>2.3</gson.version>
     <gae.version>1.9.15</gae.version>
@@ -26,8 +29,38 @@
     <dependencies>
       <!-- Compile/runtime dependencies -->
       <dependency>
-        <groupId>io.reinert.requestor</groupId>
-        <artifactId>requestor</artifactId>
+        <groupId>org.turbogwt.core</groupId>
+        <artifactId>turbogwt-core</artifactId>
+        <version>${turbogwt.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.github.nmorel.gwtjackson</groupId>
+        <artifactId>gwt-jackson</artifactId>
+        <version>${gwtjackson.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.reinert.gdeferred</groupId>
+        <artifactId>gdeferred</artifactId>
+        <version>${gdeferred.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.reinert.requestor.impl</groupId>
+        <artifactId>requestor-gdeferred</artifactId>
+        <version>${requestor.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.reinert.requestor.core</groupId>
+        <artifactId>requestor-api</artifactId>
+        <version>${requestor.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.reinert.requestor.core</groupId>
+        <artifactId>requestor-annotations</artifactId>
         <version>${requestor.version}</version>
         <scope>provided</scope>
       </dependency>

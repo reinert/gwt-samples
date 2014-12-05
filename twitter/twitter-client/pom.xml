@@ -37,8 +37,20 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>io.reinert.requestor</groupId>
-      <artifactId>requestor</artifactId>
+      <groupId>org.turbogwt.core</groupId>
+      <artifactId>turbogwt-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.github.nmorel.gwtjackson</groupId>
+      <artifactId>gwt-jackson</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.reinert.gdeferred</groupId>
+      <artifactId>gdeferred</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.reinert.requestor.impl</groupId>
+      <artifactId>requestor-gdeferred</artifactId>
     </dependency>
     <dependency>
       <groupId>com.google.gwt</groupId>

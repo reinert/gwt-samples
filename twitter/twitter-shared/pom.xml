@@ -17,8 +17,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.reinert.requestor</groupId>
-            <artifactId>requestor</artifactId>
+            <groupId>io.reinert.requestor.core</groupId>
+            <artifactId>requestor-annotations</artifactId>
         </dependency>
     </dependencies>
 
