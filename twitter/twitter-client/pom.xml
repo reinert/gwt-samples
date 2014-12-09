@@ -49,6 +49,10 @@
       <artifactId>gdeferred</artifactId>
     </dependency>
     <dependency>
+      <groupId>io.reinert.requestor.ext</groupId>
+      <artifactId>requestor-gwtjackson</artifactId>
+    </dependency>
+    <dependency>
       <groupId>io.reinert.requestor.impl</groupId>
       <artifactId>requestor-gdeferred</artifactId>
     </dependency>

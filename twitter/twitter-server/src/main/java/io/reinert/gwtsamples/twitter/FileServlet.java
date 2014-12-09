@@ -1,6 +1,8 @@
-package io.reinert.gwtsamples.twitter.service;
+package io.reinert.gwtsamples.twitter;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,10 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/server/auth/*")
-public class AuthServlet extends HttpServlet {
+@WebServlet("/server/files/*")
+public class FileServlet extends HttpServlet {
 
-    public static final String APPLICATION_JSON = "application/json";
+    public static final String IMAGE_JPG = "image/jpg";
     public static final String ACCEPT = "Accept";
     public static final String CONTENT_TYPE = "Content-Type";
 
@@ -41,20 +43,18 @@ public class AuthServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        String accept = req.getHeader(ACCEPT);
-//        if (accept.equalsIgnoreCase(APPLICATION_JSON)) {
-//            resp.setHeader(CONTENT_TYPE, APPLICATION_JSON);
-//            ResourceMatcher resource = new ResourceMatcher(req, resp);
-//            if (resource.matchesOne()) {
-//                try (PrintWriter w = resp.getWriter()) {
-//                    String tweetsJson = Factory.getGson().toJson(TweetTable.get(resource.getId()));
-//                    w.println(tweetsJson);
-//                }
-//            } else if (resource.matchesAll()) {
-//                try (PrintWriter w = resp.getWriter()) {
-//                    String tweetsJson = Factory.getGson().toJson(TweetTable.get());
-//                    w.println(tweetsJson);
-//                }
-//            }
+//        if (accept.equalsIgnoreCase(IMAGE_JPG)) {
+            resp.setHeader(CONTENT_TYPE, IMAGE_JPG);
+            resp.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidate");
+            OutputStream out = resp.getOutputStream();
+            InputStream in = getServletContext().getResourceAsStream("/images/tiger.jpg");
+            byte[] buffer = new byte[4096];
+            int length;
+            while ((length = in.read(buffer)) > 0){
+                out.write(buffer, 0, length);
+            }
+            in.close();
+            out.flush();
 //        } else {
 //            resp.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
 //        }

@@ -22,8 +22,8 @@ public class SampleActivittyMapper implements ActivityMapper {
         if (place instanceof HomePlace)
             return new HomeActivity(clientFactory.getHome(), clientFactory.getRequestor(), clientFactory.getUserName());
         else if (place instanceof AboutPlace)
-            return new AboutActivity(clientFactory.getAbout(), clientFactory.getPlaceController());
-
+            return new AboutActivity(clientFactory.getAbout(), clientFactory.getPlaceController(),
+                    clientFactory.getRequestor());
         return null;
     }
 }

@@ -41,6 +41,12 @@
         <scope>provided</scope>
       </dependency>
       <dependency>
+        <groupId>io.reinert.requestor.ext</groupId>
+        <artifactId>requestor-gwtjackson</artifactId>
+        <version>${requestor.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
         <groupId>io.reinert.gdeferred</groupId>
         <artifactId>gdeferred</artifactId>
         <version>${gdeferred.version}</version>

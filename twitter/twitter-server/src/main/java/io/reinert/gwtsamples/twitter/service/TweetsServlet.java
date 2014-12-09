@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import io.reinert.gwtsamples.twitter.database.TweetTable;
 import io.reinert.gwtsamples.twitter.model.Tweet;
 
+@WebServlet("/server/tweets/*")
 public class TweetsServlet extends HttpServlet {
 
     public static final String APPLICATION_JSON = "application/json";
