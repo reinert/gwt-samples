@@ -16,7 +16,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <mavenVersion>3.0</mavenVersion>
     <requestor.version>0.1.0-SNAPSHOT</requestor.version>
-    <gdeferred.version>0.9.0-SNAPSHOT</gdeferred.version>
+    <gdeferred.version>0.9.0</gdeferred.version>
     <gwtjackson.version>0.7.0</gwtjackson.version>
     <turbogwt.version>0.4.0</turbogwt.version>
     <gwt.version>2.7.0</gwt.version>
