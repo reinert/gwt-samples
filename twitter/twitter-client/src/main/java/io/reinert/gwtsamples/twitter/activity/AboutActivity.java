@@ -35,7 +35,7 @@ public class AboutActivity extends AbstractActivity implements About.Handler {
     @Override
     public void onHomeClick() {
         //placeController.goTo(new HomePlace());
-        requestor.request("http://images.forwallpaper.com/files/images/d/d645/d64527b8/199454/paris-sunset-beautiful-france-city-paris-france-the-eiffel-tower-colorful-sunset.jpg")
+        requestor.request("/server/files")
                 .accept("image/jpg")
                 .responseType(ResponseType.BLOB)
                 .header("Cache-Control", "no-cache")
@@ -43,12 +43,11 @@ public class AboutActivity extends AbstractActivity implements About.Handler {
                 .done(new DoneCallback<Payload>() {
                     @Override
                     public void onDone(Payload result) {
-                        GWT.log(result != null ? "TRUE" : "FALSE");
-                        final JavaScriptObject blob = result.isJavaScriptObject();
-                        GWT.log(blob != null ? "TRUE" : "FALSE");
-                        final String text = result.isString();
-                        GWT.log(text != null ? "TRUE" : "FALSE");
-                        about.createImage(blob);
+                        Element e = Document.get().getElementById("imageProgress");
+                        e.getStyle().setWidth(100, Style.Unit.PCT);
+                        e.getFirstChildElement().setInnerText("Completed");
+
+                        about.createImage(result.isJavaScriptObject());
                     }
                 }).fail(new FailCallback<Throwable>() {
                     @Override
@@ -59,6 +58,9 @@ public class AboutActivity extends AbstractActivity implements About.Handler {
                     @Override
                     public void onProgress(RequestProgress progress) {
                         Element e = Document.get().getElementById("imageProgress");
+                        GWT.log("Is Length Computable? " + progress.isLengthComputable());
+                        GWT.log("Loaded: " + progress.loaded());
+                        GWT.log("Total: " + progress.total());
                         final double value = progress.loaded() / progress.total();
                         e.getStyle().setWidth(value, Style.Unit.PCT);
                         e.getFirstChildElement().setInnerText(String.valueOf(value));

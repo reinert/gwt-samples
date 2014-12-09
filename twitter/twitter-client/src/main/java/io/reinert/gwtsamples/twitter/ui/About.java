@@ -33,11 +33,11 @@ public class About extends Composite {
 
     @UiHandler("homeButton")
     public void onHomeButtonClick(ClickEvent event) {
-        // if (handler != null) handler.onHomeClick();
+        if (handler != null) handler.onHomeClick();
 
         // upload
-        final String filename = upload.getFilename();
-        handler.upload(getFile(upload.getElement()), filename.substring(filename.lastIndexOf('\\') + 1));
+        // final String filename = upload.getFilename();
+        // handler.upload(getFile(upload.getElement()), filename.substring(filename.lastIndexOf('\\') + 1));
     }
 
     public void setHandler(Handler handler) {

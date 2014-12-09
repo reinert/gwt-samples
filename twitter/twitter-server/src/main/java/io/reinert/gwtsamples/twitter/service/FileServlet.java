@@ -85,14 +85,19 @@ public class FileServlet extends HttpServlet {
 //        String accept = req.getHeader(ACCEPT);
 //        if (accept.equalsIgnoreCase(IMAGE_JPG)) {
             resp.setHeader(CONTENT_TYPE, IMAGE_JPG);
+
             resp.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidate");
             OutputStream out = resp.getOutputStream();
             InputStream in = getServletContext().getResourceAsStream("/images/tiger.jpg");
-            byte[] buffer = new byte[4096];
+
+            byte[] buffer = new byte[1024];
             int length;
             while ((length = in.read(buffer)) > 0){
                 out.write(buffer, 0, length);
             }
+
+            resp.setContentLength(1024);
+
             in.close();
             out.flush();
 //        } else {
